@@ -1,255 +1,102 @@
-// const sanPhamUI = [
-//   { ten: "Chuột", gia: 150000, tonKho: true },
-//   { ten: "Bàn phím", gia: 500000, tonKho: false },
-//   { ten: "Màn hình", gia: 300000, tonKho: true },
-//   { ten: "Tai nghe", gia: 200000, tonKho: true },
-// ];
+// Ví dụ 1: Dùng while để lặp lại hành động theo số lần
+// Yếu tố 1: biến đếm, dùng để theo dõi đang lặp đến lần thứ mấy
+let soLanClick = 1;
 
-// // Lọc sản phẩm còn hàng bằng for
-// const sanPhamConHang = [];
-// for (let i = 0; i < sanPhamUI.length; i++) {
-//   if (sanPhamUI[i].tonKho === true) {
-//     sanPhamConHang.push(sanPhamUI[i]);
-//   }
-// }
+// Yếu tố 2: điều kiện lặp
+// Khi soLanClick còn nhỏ hơn hoặc bằng 3 thì vòng lặp vẫn tiếp tục chạy
+while (soLanClick <= 3) {
+  // Thực hiện hành động ở mỗi lần lặp
+  console.log(`Đang click lần thứ ${soLanClick}`);
 
-// console.log(sanPhamConHang);
-
-// // // Lọc sản phẩm có giá < 200000
-// // const sanPhamGiaThap = sanPhamUI.filter(sp => sp.gia < 200000);
-
-// // console.log(sanPhamGiaThap);
-// // const sanPhamUI = [
-// //   { ten: "Chuột", gia: 150000, tonKho: true },
-// //   { ten: "Bàn phím", gia: 500000, tonKho: false },
-// //   { ten: "Màn hình", gia: 300000, tonKho: true },
-// //   { ten: "Tai nghe", gia: 200000, tonKho: true },
-// // ];
-
-// // Lọc sản phẩm giá < 200000 và còn hàng
-// const sanPhamHopLe = sanPhamUI.filter(sp => sp.gia < 200000 && sp.tonKho);
-
-// console.log(sanPhamHopLe);
-
-// const users = [
-//   { id: 1, ten: "neko", role: "admin" },
-//   { id: 2, ten: "mew", role: "tester" },
-//   { id: 3, ten: "Cat", role: "tester" },
-// ];
-
-// const adminUser = users.find(user => user.role === "admin");
-
-// console.log(adminUser);
-
- // ## Bài 1: Refactor hàm `taoPayloadDangNhap()`
- 
- // ### Bối cảnh thực tế
- 
- // Form đăng nhập ngoài đời thường rất bẩn:
- 
- // - người dùng gõ thừa khoảng trắng
- // - role viết hoa viết thường lung tung
- // - checkbox `remember me` lúc thì là `true`, lúc là `"yes"`, lúc là `"on"`
- // - dev truyền object input vào nhiều nơi, chỉ cần sửa trực tiếp nhầm một lần là bug dây chuyền
- 
- // ### Đề bài
- 
- // Viết hàm:
- 
- // ```javascript
- // function taoPayloadDangNhap(formInput, options = {})
- // ```
- 
- // ### Bộ data test dùng để làm bài
- 
- const loginOptions = {
-     defaultRole: "guest",
-     allowedRoles: ["admin", "tester", "viewer", "guest"],
-     minPasswordLength: 8
- };
- 
- const loginTestData = [
-     {
-         name: "Case 1 - Hợp lệ cơ bản",
-         formInput: {
-             username: "  Neko_Admin  ",
-             password: "  12345678  ",
-             role: " tester ",
-             rememberMe: "yes",
-             device: "  chrome-win11  "
-         }
-     },
-     {
-         name: "Case 2 - Role rỗng, phải dùng defaultRole",
-         formInput: {
-             username: "  guest_user  ",
-             password: "  abcdefgh  ",
-             role: "   ",
-             rememberMe: "no",
-             device: " firefox "
-         }
-     },
-     {
-         name: "Case 3 - Username rỗng",
-         formInput: {
-             username: "    ",
-             password: "12345678",
-             role: "tester",
-             rememberMe: "yes",
-             device: "chrome"
-         }
-     },
-     {
-         name: "Case 4 - Username có khoảng trắng ở giữa",
-         formInput: {
-             username: "neko admin",
-             password: "12345678",
-             role: "tester",
-             rememberMe: "yes",
-             device: "chrome"
-         }
-     },
-     {
-         name: "Case 5 - Password quá ngắn",
-         formInput: {
-             username: "valid_user",
-             password: "123",
-             role: "tester",
-             rememberMe: true,
-             device: "chrome"
-         }
-     },
-     {
-         name: "Case 6 - Role không hợp lệ",
-         formInput: {
-             username: "valid_user",
-             password: "12345678",
-             role: "manager",
-             rememberMe: "on",
-             device: "chrome"
-         }
-     },
-     {
-         name: "Case 7 - rememberMe là boolean true",
-         formInput: {
-             username: "admin01",
-             password: "abcdefgh",
-             role: "admin",
-             rememberMe: true,
-             device: "edge"
-         }
-     },
-     {
-         name: "Case 8 - rememberMe là chuỗi lạ",
-         formInput: {
-             username: "viewer01",
-             password: "abcdefgh",
-             role: "viewer",
-             rememberMe: "maybe",
-             device: "safari"
-         }
-     }
- ];
- 
- // Khi làm với bộ data test này:
- 
- // - `formInput` nhận `loginTestData[i].formInput`
- // - `options` nhận `loginOptions`
- // - Ví dụ gọi hàm: `taoPayloadDangNhap(loginTestData[0].formInput, loginOptions)`
- 
- // ### Yêu cầu
- 
- // 1. Dùng object destructuring để lấy dữ liệu từ `formInput`.
- // 2. Dùng object destructuring + default value để lấy dữ liệu từ `options`.
- //    - Nếu `options.defaultRole` không có thì biến `defaultRole` nhận `"guest"`.
- //    - Nếu `options.minPasswordLength` không có thì biến `minPasswordLength` nhận `8`.
- //    - `"guest"` và `8` lấy theo `loginOptions` đã cho ở đầu bài, không phải tự nghĩ thêm.
- //    - `allowedRoles` lấy thẳng từ `options.allowedRoles`, không tự thêm giá trị khác.
- //    - Trong bộ data test hiện tại, `options` đã có đủ field nên 2 giá trị mặc định này có thể không chạy; chúng được giữ lại để bám đúng YC2.
- // 3. Chuẩn hóa dữ liệu:
- //    - `username` -> trim, chuyển về lowercase
- //    - `password` -> trim
- //    - `role` -> trim, lowercase
- //    - `device` -> trim
- //    - `rememberMe` -> chuyển về boolean
- // 4. Kiểm tra hợp lệ:
- //    - `username` không được rỗng
- //    - `username` không được chứa khoảng trắng ở giữa
- //    - `password` phải dài ít nhất `minPasswordLength`
- //    - `role` phải nằm trong `allowedRoles`
- // 5. Không được sửa trực tiếp `formInput` hoặc `options`.
- // 6. Phải trả về object theo dạng:
- 
- // ```javascript
- // {
- //     isValid: true,
- //     payload: {
- //         username: "neko_admin",
- //         password: "12345678",
- //         role: "tester",
- //         rememberMe: true,
- //         device: "chrome-win11"
- //     },
- //     errors: []
- // }
- // ```
-function taoPayloadDangNhap(formInput, options = {}) {
-     // 1. Object destructuring để lấy dữ liệu từ formInput
-    const { username, password, role, rememberMe, device } = formInput;
-     // 2. Object destructuring + default value để lấy dữ liệu từ options
-     const {
-         defaultRole = "guest",
-         allowedRoles,
-         minPasswordLength = 8
-     } = options;
-
-    // 3. Chuẩn hóa dữ liệu
-    const normalizedUsername = String(username).trim().toLowerCase();
-    const normalizedPassword = String(password).trim();
-    const normalizedRole = String(role).trim().toLowerCase();
-    const normalizedDevice = String(device).trim();
-    const normalizedRememberMe =
-        rememberMe === true ||
-        String(rememberMe).toLowerCase() === "yes" ||
-        String(rememberMe).toLowerCase() === "on";
-
-    // 4. Kiểm tra hợp lệ
-    const errors = [];
-
-    if (normalizedUsername.length === 0) {
-        errors.push("Username không được rỗng");
-    } else if (normalizedUsername.includes(" ")) {
-        errors.push("Username không được chứa khoảng trắng ở giữa");
-    }
-
-    if (normalizedPassword.length < minPasswordLength) {
-        errors.push(`Password phải dài ít nhất ${minPasswordLength}`);
-    }
-
-    const finalRole = normalizedRole.length === 0 ? defaultRole : normalizedRole;
-    if (!Array.isArray(allowedRoles) || !allowedRoles.includes(finalRole)) {
-        errors.push("Role không hợp lệ");
-    }
-
-    const isValid = errors.length === 0;
-
-    return {
-        isValid,
-        payload: {
-            username: normalizedUsername,
-            password: normalizedPassword,
-            role: finalRole,
-            rememberMe: normalizedRememberMe,
-            device: normalizedDevice
-        },
-        errors
-    };
+  // Yếu tố 3: cập nhật biến đếm để tiến tới lúc thoát vòng lặp
+  soLanClick++;
 }
 
-loginTestData.forEach(testCase => {
-    console.log(`\n--- ${testCase.name} ---`);
-    const result = taoPayloadDangNhap(testCase.formInput, loginOptions);
-    console.log(result);
-});
- 
- 
+// Sau khi vòng lặp kết thúc, in ra thông báo hoàn thành
+console.log("Đã click xong 3 lần, thoát vòng lặp");
+
+// Ví dụ 2: Lặp cho đến khi ăn hết số miếng thịt
+let miengThit = 5;
+
+// Khi còn miếng thịt thì tiếp tục ăn
+while (miengThit > 0) {
+  // Hiển thị số miếng còn lại trước khi giảm đi
+  console.log(`Đang ăn... Còn lại ${miengThit} miếng`);
+
+  // Mỗi lần lặp ăn hết 1 miếng
+  miengThit--;
+}
+
+// Khi không còn miếng nào nữa thì kết thúc
+console.log("Đã ăn hết, no bụng");
+
+// Trong automation test sẽ có cơ chế retry:
+// thử lại tối đa N lần nếu chưa tìm thấy phần tử
+// Bài toán: tìm nút thanh toán, cứ 1 giây tìm 1 lần,
+// tìm tối đa 5 lần, nếu thấy thì dừng, nếu quá 5 lần thì báo lỗi
+
+// Khai báo biến phục vụ cho cơ chế retry
+let maxRetry = 5; // Số lần thử tối đa
+let currentRetry = 1; // Lần thử hiện tại
+let isFound = false; // Trạng thái đã tìm thấy nút hay chưa
+
+// Tiếp tục lặp khi chưa tìm thấy và vẫn còn lượt thử
+while (isFound === false && currentRetry <= maxRetry) {
+  // Thông báo đang tìm nút trên màn hình
+  console.log(`Đang tìm nút thanh toán trên màn hình ...`);
+
+  // Giả lập quá trình tìm kiếm bằng số ngẫu nhiên
+  let toolGiaLap = Math.random();
+  let searchResult = toolGiaLap > 0.3;
+
+  // In ra giá trị ngẫu nhiên để quan sát kết quả giả lập
+  console.log(`Search result : ${toolGiaLap}`);
+
+  // Nếu tìm thấy nút
+  if (searchResult === true) {
+    // Đổi trạng thái để thoát vòng lặp
+    isFound = true;
+    console.log("NGON! Đã tìm thấy nút thanh toán. Bấm click ngay");
+  } else {
+    // Nếu chưa thấy thì thông báo và tăng lượt thử
+    console.log("Không thấy, chuẩn bị thử lại");
+    currentRetry++; // Tăng số lần thử lên 1
+  }
+}
+
+// Xử lý kết quả sau khi thoát vòng lặp
+if (isFound === false) {
+  console.log(`TEST FAIL, đã thử 5 lần nhưng mạng lag quá, không thấy nút đâu`);
+}
+
+// Bài tập nhỏ:
+// Có 1 hệ thống đăng nhập.
+// Rule là: hệ thống cho phép nhập sai mật khẩu tối đa 3 lần.
+// Nếu nhập đúng trước khi hết lượt -> hiển thị "Đăng nhập thành công".
+// Nếu vẫn sai sau 3 lần -> khóa tài khoản.
+
+let matKhauDung = "1234";
+let maxLanThu = 3;
+
+// Yêu cầu:
+// 1. Dùng while để mô phỏng quá trình nhập mật khẩu tối đa 3 lần.
+// 2. Ở mỗi lần thử, giả lập người dùng nhập mật khẩu bằng cách
+//    gán cứng giá trị cho biến matKhauNhap = "0000", matKhauNhap = "9999"
+//    (dùng if else if).
+// Nếu nhập đúng, in ra "Đăng nhập thành công".
+// Nếu nhập sai, in ra "Sai mật khẩu".
+// Kiểm tra sau khi thoát vòng lặp: nếu đã dùng hết 3 lần mà vẫn sai
+// thì in ra "Tài khoản bị khóa".
+
+// Ví dụ gợi ý ý tưởng:
+// if (lanThu === 1) {
+//   matKhauNhap = "0000";
+// } else if (lanThu === 2) {
+//   matKhauNhap = "9999";
+// } else if (lanThu === 3) {
+//   matKhauNhap = "1234";
+// }
+
+// Phác sơ đồ tư duy cũng được nếu chưa quen tay khi code
+// Infinite scroll
+// Ctrl + Alt + Delete

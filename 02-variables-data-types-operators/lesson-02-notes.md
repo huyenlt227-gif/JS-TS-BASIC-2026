@@ -433,6 +433,9 @@ Toán tử so sánh
 - `==` và `===` đều dùng để so sánh bằng nhau.
 - `===` là so sánh tuyệt đối, nghĩa là hai giá trị phải **đồng nhất về cả giá trị và kiểu dữ liệu**.
 
+-- so sánh khác nhau
+!==
+
 - Không nên sử dụng `==`:
   - Đây là phép so sánh lỏng lẻo.
   - Chỉ ưu tiên so sánh **giá trị**, không kiểm tra chặt chẽ **kiểu dữ liệu**.

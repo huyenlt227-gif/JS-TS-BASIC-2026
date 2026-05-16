@@ -174,7 +174,7 @@ let resultPostFix = i * 2;
 //ví dụ mình đang test logic retry của nút submit.
 // 1 bạn mới trong team viết đoạn code sau để vừa log vừa giảm/tăng số lần thử
 
-// let retries = 2;
+let retries = 2;
 
 // let firstLog = retries++;
 
@@ -182,58 +182,111 @@ let resultPostFix = i * 2;
 
 // let canRetry = retries-- > 3;
 
-//đoán output 4 dòng
-// //viết lại theo cách rõ ràng
-// let firstlog = retries; // 2
-// retries++; // 3
+// console.log(firstLog);
 
-// ++retries; // 4
-// let secondLog = retries; // 4
-
-// let canRetry = retries > 3; // 4 > 3 → true
-
-
-// console.log(firstlog);
 // console.log(secondLog);
+
 // console.log(canRetry);
+
 // console.log(retries);
 
-// ===================================================
-// BÀI TẬP: Promotion - Giảm giá vé VIP
-// ===================================================
-// Rule: Nếu tuổi > 18 VÀ là VIP, giảm 30% giá vé. Ngược lại giữ nguyên
+//đoán output 4 dòng
+//viết lại theo cách rõ ràng
+console.log("Kết quả");
 
+let firstLog = retries;
+retries++;
+
+++retries;
+
+let secondLog = retries;
+
+let canRetry = retries > 3;
+
+console.log(firstLog);
+
+console.log(secondLog);
+
+console.log(canRetry);
+
+console.log(retries);
+// Bài tập
+// Mình có 1 chương trình khuyến mãi:
+// Nếu khách hàng > 18 tuổi và là thành viên VIP thì được giảm 30% giá vé.
+// Ngược lại, giá vé được giữ nguyên.
 
 let rawAge = " 25 tuổi";
 let rawisVIP = "true";
 let rawTicketPrice = "  500.000 đ ";
 
-// // ✅ BƯỚC 1: Làm sạch và ép kiểu (chain methods)
-// let age = Number(rawAge.trim().replace(" tuổi", ""));
-// let isVIP = rawisVIP === "true";
-// let ticketPrice = Number(rawTicketPrice.trim().replace(" đ", "").replaceAll(".", ""));
+// Kiểm tra nhanh chuỗi có rỗng hay không bằng Boolean()
+let isVip = Boolean(rawisVIP);
+console.log(isVip); // Chuỗi "true" không rỗng nên kết quả là true
+console.log(Boolean("")); // Chuỗi rỗng nên kết quả là false
+console.log(Boolean("hello")); // Chuỗi không rỗng nên kết quả là true
 
-// // ✅ BƯỚC 2: Kiểm tra điều kiện (AND logic)
-// let isEligibleForDiscount = age > 18 && isVIP;
-// console.log(`Điều kiện: age > 18 && isVIP = ${isEligibleForDiscount}`);
+// Yêu cầu:
+// 1. Làm sạch dữ liệu và ép kiểu
+// 2. Kiểm tra điều kiện: nếu đủ điều kiện thì tính giá sau khi giảm 30%, nếu không thì giữ nguyên
+// 3. In kết quả
 
-// // ✅ BƯỚC 3: Tính giá cuối cùng (không dùng if-else, dùng toán tử logic)
-// let finalPrice = ticketPrice * (1 - isEligibleForDiscount * 0.3);  // true=1 → 0.7, false=0 → 1
+// Làm sạch và ép kiểu tuổi từ chuỗi sang số
+let age = Number(rawAge.trim().replace("tuổi", "").trim());
 
-// console.log(`Giá cuối: ${finalPrice}`);
+// Làm sạch và ép kiểu trạng thái VIP từ chuỗi sang boolean thực sự
+let isMemberVIP = rawisVIP.trim().toLowerCase() === "true";
 
-// // ✅ BƯỚC 4: In kết quả
-// console.log(`  Tuổi: ${age} | VIP: ${isVIP} | Giá gốc: ${ticketPrice} | Giá cuối: ${finalPrice}`);
+// Làm sạch và ép kiểu giá vé từ chuỗi sang số
+let ticketPrice = Number(
+  rawTicketPrice.trim().replaceAll(".", "").replace("đ", "").trim(),
+);
 
-let age = Number(rawAge.trim().replace(" tuổi", ""));
+// Kiểm tra khách hàng có đủ điều kiện giảm giá hay không
+let isEligible = age > 18 && isMemberVIP;
 
-let isVIP = rawisVIP === "true";
+// Nếu đủ điều kiện thì giảm 30%, ngược lại giữ nguyên giá gốc
+let finalPrice = isEligible ? ticketPrice * 0.7 : ticketPrice;
 
-let ticketPrice = Number(rawTicketPrice.trim().replace(" đ", "").replaceAll(".", ""));
-let isEligibleForDiscount = age > 18 && isVIP;
+console.log(finalPrice);
 
-console.log(`Điều kiện: age > 18 && isVIP = ${isEligibleForDiscount}`);
-let finalPrice = ticketPrice * (1 - isEligibleForDiscount * 0.3);  // true=1 → 0.7, false=0 → 1
+// In kết quả ra màn hình
+console.log("Tuổi:", age);
+console.log("Là thành viên VIP:", isMemberVIP);
+console.log("Giá vé gốc:", ticketPrice);
+console.log("Đủ điều kiện giảm giá:", isEligible);
+console.log("Giá vé sau cùng:", finalPrice);
 
-
-console.log(`  Tuổi: ${age} | VIP: ${isVIP} | Giá gốc: ${ticketPrice} | Giá cuối: ${finalPrice}`);
+// Trace thực thi:
+// 1. rawAge = " 25 tuổi", rawisVIP = "true", rawTicketPrice = "  500.000 đ ".
+// 2. Boolean(rawisVIP) trả về true vì đây là chuỗi không rỗng, nên isVip = true.
+// 3. Chương trình in ra lần lượt:
+//    - true
+//    - false
+//    - true
+// 4. rawAge được làm sạch:
+//    - trim() => "25 tuổi"
+//    - replace("tuổi", "") => "25 "
+//    - trim() => "25"
+//    - Number("25") => age = 25
+// 5. rawisVIP được làm sạch:
+//    - trim() => "true"
+//    - toLowerCase() => "true"
+//    - so sánh === "true" => isMemberVIP = true
+// 6. rawTicketPrice được làm sạch:
+//    - trim() => "500.000 đ"
+//    - replaceAll(".", "") => "500000 đ"
+//    - replace("đ", "") => "500000 "
+//    - trim() => "500000"
+//    - Number("500000") => ticketPrice = 500000
+// 7. Kiểm tra điều kiện giảm giá:
+//    - age > 18 => true
+//    - isMemberVIP => true
+//    - true && true => isEligible = true
+// 8. Tính giá cuối cùng:
+//    - vì isEligible là true nên finalPrice = 500000 * 0.7 = 350000
+// 9. Kết quả in ra cuối cùng:
+//    - Tuổi: 25
+//    - Là thành viên VIP: true
+//    - Giá vé gốc: 500000
+//    - Đủ điều kiện giảm giá: true
+//    - Giá vé sau cùng: 350000

@@ -1,127 +1,313 @@
-let loiChao = "Xin chào các bạn";
-let loiChao2 = 'Xin chào các bạn';
-let myName = "I'm Huyen";
+// Variable declarations
+let loiChao = "xin chao buoi sang"; // Gán một chuỗi lời chào vào biến
+let loiChao2 = "xin chao buoi sang"; // Tạo thêm một biến khác chứa cùng nội dung
+let myName = "I'm Hoang"; // Lưu tên của bạn dưới dạng chuỗi
 
-const tenHocVien = "Huyền";
+// Constant declaration
+const tenHocVien = "Hoàng"; // Khai báo hằng số để lưu tên học viên
 
-//dung backstick nhung bien ten hoc vien vao chuoi khac
+// Template literal
+// Dùng dấu backtick (`) để chèn biến vào giữa câu hoặc một chuỗi khác
+const loiGioiThieu = `Tên tôi là ${tenHocVien}`; // Tạo câu giới thiệu có chèn giá trị của biến
 
-const loiGioiThieu = `Xin chào, tôi tên là ${tenHocVien}`;
- //output 
-console.log(loiGioiThieu);
+// Output
+console.log(loiGioiThieu); // In câu giới thiệu ra màn hình console
 
-const productName = "Iphone 14 Pro Max";
+// Constants
+const productName = "iphone 15 promax"; // Store the product name in a constant variable
 
-const productSelector = `h2:has-text("${productName}")`;
-//output
-console.log(productSelector);
+// Template literal
+const productSelector = `h2:has-text("${productName}")`; // Build a selector string using the product name
 
+// Output
+// Expected result: h2:has-text("iphone 15 promax")
+console.log(productSelector); // Print the selector to the console
 
-//khai bao bien tuoi va gán giá trị nguyên
-let tuoi = 20;
+// Kiểu dữ liệu number
 
-//khai bao bien diem va gán giá trị thập phân
-let diem = 8.5;                 
+// Khai báo biến tuổi và gán giá trị số nguyên.
+let tuoi = 30;
 
-let ketQua = (tuoi - 5) * diem; //tính toán kết quả
+// Khai báo hằng số PI với giá trị gần đúng.
+const PI = 3.14;
 
-//in kết quả ra console
+// Tính kết quả dựa trên biến tuoi.
+let ketQua = (tuoi - 5) * 2;
+
+// In kết quả ra console.
 console.log(ketQua);
 
-//kiểu dữ liệu boolean
-let isStudent = true; //biến boolean có giá trị true
-let isEmployed = false; //biến boolean có giá trị false 
-let daTotNghiep = true; //biến boolean có giá trị true
-let denDangbat = false; //biến boolean có giá trị false
+// Kiểu dữ liệu boolean (đúng/sai)
+// Boolean values
+let denDangBat = true; // Đèn đang bật.
+let daTotNghiep = false; // Chưa tốt nghiệp.
 
-//length() đếm số lượng ký tự trong chuỗi
-let matKhau = "123456";
-console.log(matKhau.length);
+// String length
+let matKhau = "123456"; // Chuỗi mật khẩu mẫu.
+console.log(matKhau.length); // In ra số ký tự của chuỗi.
 
-//trim() loại bỏ khoảng trắng ở đầu và cuối chuỗi
-let tenDangNhap = "  user123  ";
-console.log(tenDangNhap.trim());
+// trim()
+let emailWeb = "   user01   "; // Chuỗi có khoảng trắng ở đầu và cuối.
 
-//toUpperCase() chuyển đổi chuỗi thành chữ hoa
-// IPHONE 15 - data test lại là iphone 15
-//giai phap chuyển cả hai về cùng 1 kiểu (thường là lowercase) rồi mới so sánh
+let emailChuan = emailWeb.trim(); // Xóa khoảng trắng ở đầu và cuối chuỗi.
+console.log(emailChuan); // In ra chuỗi sau khi đã trim.
+console.log(emailChuan.length); // In ra độ dài của chuỗi sau khi trim.
 
-let tenSanPham = "iPhOne 15";  
-console.log(tenSanPham.toLowerCase());
+// toUpperCase() - toLowerCase()
 
-//include() kiểm tra xem chuỗi có chứa một chuỗi con hay không, trả về true hoặc false
+// Ví dụ: "IPHoNE 15" nhưng dữ liệu test lại là "iphone 15".
+// Giải pháp: chuyển cả hai về cùng một kiểu chữ
+// (thường là chữ thường) rồi mới so sánh.
 
-let thongBao = "Đăng nhập thất bại. Sai mật khẩu.";
-console.log(thongBao);
-console.log(thongBao.includes("Sai mật khẩu")); //true
+let tenSanPham = "iPhOne 15"; // Tên sản phẩm với chữ hoa/thường lẫn lộn.
 
-let msg = "login Error: Invalid username or password.";
-console.log(msg);
-console.log(msg.includes("Invalid username or password")); //true
+console.log(tenSanPham.toLowerCase()); // Chuyển toàn bộ chuỗi thành chữ thường.
 
-let msg2 = "login Error: Invalid username or password.";
-console.log(msg2.includes("Error")); //true
-console.log(msg2.includes("error")); //true
+// includes()
+let thongBao = "Đăng nhập thất bại. Sai mật khẩu"; // Nội dung thông báo lỗi.
 
-let a = "Hello";
-let b = "hello";
-console.log(a.toLowerCase() === b.toLowerCase()); //true   
+console.log(thongBao.includes("Thành công")); // Kiểm tra xem chuỗi có chứa "Thành công" không.
+console.log(thongBao.includes("mật khẩu")); // Kiểm tra xem chuỗi có chứa "mật khẩu" không.
 
-//include co check khoảng trắng
-let s = "Xin chào các bạn";
-console.log(s.includes("chào")); //true
-console.log(s.includes("chào  ")); //false
-//  vì có khoảng trắng sau chữ "chào"
+let msg = "login Error: invalid password"; // Chuỗi thông báo tiếng Anh.
 
+console.log(msg.includes("Error")); // Kiểm tra có chứa "Error" hay không.
+console.log(msg.includes("error")); // Kiểm tra có chứa "error" hay không (phân biệt hoa/thường).
+// So sánh chuỗi không phân biệt chữ hoa, chữ thường trong JavaScript
+// let a = "Hello";
 
-//replace() thay thế một phần của chuỗi bằng một phần khác
+// let b = "hello";
+
+// Chuyển cả 2 chuỗi về chữ thường rồi so sánh
+// console.log(a.toLocaleLowerCase() === b.toLocaleLowerCase());
+
+// includes() có kiểm tra cả khoảng trắng
+// let s = "xin chao ban";
+
+// Kiểm tra chuỗi có chứa "chao" hay không
+// console.log(s.includes("chao"));
+
+// Có khoảng trắng phía trước nên kết quả sẽ khác
+// console.log(s.includes(" chao"));
+
+// Có khoảng trắng phía sau nên kết quả sẽ khác
+// console.log(s.includes("chao "));
+
+// Nhiều khoảng trắng phía sau cũng được tính là khác
+// console.log(s.includes("chao   "));
+
+// replace()
+// Khai báo chuỗi giá tiền có ký hiệu $
 let giaTien = "100$";
-let giaTienSo = giaTien.replace("$", ""); //loại bỏ ký tự "$"
+
+// Xóa ký hiệu $ ra khỏi chuỗi
+let giaTienSo = giaTien.replace("$", "");
+
+// In ra giá trị sau khi đã xóa ký hiệu $
 console.log(giaTienSo);
 
+// Chuỗi tiền có dấu chấm phân tách
 let tien = "1.000.000";
-console.log(tien.replace(".", "")); //kết quả: "1000000" nhưng chỉ thay thế được 1 dấu chấm đầu tiên
 
-console.log(tien.replaceAll(".", "")); //kết quả: "1000000" thay thế tất cả dấu chấm trong chuỗi
+// replace() chỉ thay thế dấu chấm đầu tiên
+console.log(tien.replace(".", ""));
 
-//để thay thế tất cả dấu chấm, ta có thể sử dụng biểu thức chính quy với flag "g" (global)
-let tien2 = "1.000.000";
-console.log(tien2.replace(/\./g, "")); //kết quả: "1000000"
+// replaceAll() thay thế tất cả dấu chấm
+console.log(tien.replaceAll(".", ""));
 
-let urlUI = "https://example.com/ui";
-console.log(urlUI.indexOf("example"));
+// Xóa tất cả khoảng trắng trong họ tên
+let tenUI = "Nguyen Van A";
+console.log(tenUI.replaceAll(" ", ""));
 
-//substring() trích xuất một phần của chuỗi dựa trên vị trí bắt đầu và kết thúc
-let maDon = "ORD-1026-00567"
-maDon.substring(4,8) //kết quả: "1026" - trích xuất phần chuỗi từ vị trí 4 đến vị trí 8 (không bao gồm vị trí 8)
-maDon.substring(0,3) //kết quả: "ORD" - trích xuất phần chuỗi từ vị trí 0 đến vị trí 3 (không bao gồm vị trí 3)
+// Chuỗi URL mẫu
+let urlUI = "https://shopee.vn/product/12345";
 
-//slice: muốn lấy chuỗi dưới dạng âm (từ cuối chuỗi đếm ngược về đầu chuỗi)
-let fileName = "report_final_v2.docx";
-fileName.slice(-4) //kết quả: ".docx" - trích xuất phần chuỗi từ vị trí -4 đến hết chuỗi (lấy 4 ký tự cuối cùng)
-fileName.slice(0,6) //kết quả: "report" - trích xuất phần chuỗi từ vị trí 0 đến vị trí 6 (không bao gồm vị trí 6)
+// Tìm vị trí xuất hiện của từ "product" trong URL
+console.log(urlUI.indexOf("product"));
 
+// Kết hợp với substring() để cắt lấy 1 phần chuỗi từ vị trí tìm được
+//slice so am
+// Kết hợp với substring() để cắt lấy một phần chuỗi từ vị trí tìm được
+// Dùng slice() với số âm để lấy ký tự từ cuối chuỗi
+let fileName = "report_2026.pdf";
 
-//kết hợp với substring() để trích xuất phần chuỗi ký tự từ vị trí tìm được
+console.log(fileName.slice(-4));
 
-let errorMsg = "Error 404: Not Found";
+let errorMsg = "Error 404: Page not found";
 
+// Tìm vị trí của dấu ":"
 let pos = errorMsg.indexOf(":");
-console.log(errorMsg.substring(errorMsg.indexOf(":") + 2)); //kết quả: "Not Found" - trích xuất phần chuỗi từ vị trí sau dấu ":" đến hết chuỗi
 
+console.log(errorMsg.substring(errorMsg.indexOf(":")));
+console.log(errorMsg.substring(errorMsg.indexOf(":") + 1));
+console.log(errorMsg.substring(errorMsg.indexOf(":") + 2));
 
-let rawText = "  Order ID: ORD-2026-123 | Status: Success  ";
+let rawText = "    Order ID: ORD-2026-123 | Status: Success   ";
+// Yêu cầu: lấy ra được chuỗi "ORD-2026-123"
+// Dùng indexOf + length + slice để lấy ra phần mã đơn hàng
 
-//yêu cầu lấy ra được ORD-2026-123
-// dùng indexOf + length + slice để lấy
- let start = rawText.indexOf("ORD"); //vị trí bắt đầu của "ORD"
- let end = rawText.indexOf("|");    //vị trí của dấu "|"
- let orderId = rawText.slice(start, end).trim(); //kết quả: "ORD-2026-123" - trích xuất phần chuỗi từ vị trí bắt đầu đến vị trí của dấu "|" và loại bỏ khoảng trắng
- console.log(orderId);  
+// Bài của Nga đang thừa 1 ký tự
+// let start = rawText.indexOf(":"); // Tìm vị trí dấu ":"
+// let end = rawText.indexOf("|"); // Tìm vị trí dấu "|"
+// let result = rawText.slice(start + 2, end); // Cắt chuỗi từ sau ": " đến trước "|"
+// console.log(result.length); // Kiểm tra độ dài kết quả
 
-// Bài toán: định dạng số 9.5 thành chuỗi "009.50"
+// Bài của Phương Đỗ đang thừa nhiều ký tự
+// let start = rawText.indexOf("Oder ID:") + 9; // Tìm vị trí sau "Oder ID:"
+// let end = rawText.indexOf("/"); // Tìm vị trí dấu "/"
+// let ketQuaCuaPhuongDo = rawText.slice(start, end).trim(); // Cắt chuỗi rồi xóa khoảng trắng thừa
+// console.log(ketQuaCuaPhuongDo.length); // Kiểm tra độ dài kết quả
+
+// Bài của Trần Kim Hoàng: GOOD JOB
+// let textClean = rawText.trim(); // Xóa khoảng trắng ở đầu và cuối chuỗi
+// let textStart = textClean.indexOf(":"); // Tìm vị trí dấu ":"
+// let textEnd = textClean.indexOf("|"); // Tìm vị trí dấu "|"
+
+// let result = textClean.slice(textStart + 2, textEnd - 1); // Cắt đúng phần mã đơn hàng
+
+// Yêu cầu: lấy ra được "ORD-2026-123" => GOOD JOB
+let start = rawText.indexOf(":"); // Tìm vị trí dấu ":" trong chuỗi
+let end = rawText.indexOf("|"); // Tìm vị trí dấu "|" trong chuỗi
+let result = rawText.slice(start + 2, end).trim(); // Cắt chuỗi từ sau ": " đến trước "|" rồi xóa khoảng trắng thừa
+console.log(result.length); // In ra độ dài chuỗi đã lấy được
+
+console.log("ORD-2026-123".length); // In ra độ dài chuỗi mẫu để đối chiếu
+
+// Chuyển chuỗi sang số với Number() và parseInt()/parseFloat()
+
+let s1 = "100"; // Chuỗi chỉ chứa số
+console.log(Number(s1)); // Chuyển thành kiểu number
+
+let s2 = "100px"; // Chuỗi có cả số và chữ
+console.log(Number(s2)); // Number() không chuyển được nên trả về NaN
+console.log(parseInt(s2)); // parseInt() lấy phần số nguyên ở đầu chuỗi
+console.log(parseInt("10.999")); // parseInt() chỉ lấy phần nguyên trước dấu chấm
+console.log(parseFloat("10.5Kg")); // parseFloat() lấy được số thực ở đầu chuỗi
+
+// Trường hợp Number("") sẽ chuyển thành 0
+// console.log(Number(""));
+// => Nếu chuỗi chỉ có khoảng trắng, nên kiểm tra trước:
+// if (str.trim() === "") { '// xử lý logic' }
+
+console.log((19.956).toFixed(2)); // Làm tròn và giữ lại 2 chữ số thập phân
+console.log((19.952).toFixed(2)); // Kết quả trả về là chuỗi
+console.log((19.9).toFixed(2)); // Số 0 sẽ được thêm vào nếu thiếu
+
+let diem = 4.2; // Khai báo điểm là số thực
+
+console.log(Math.ceil(diem)); // Làm tròn lên thành số nguyên gần nhất
+console.log(Math.floor(diem)); // Làm tròn xuống thành số nguyên gần nhất
+
+// Sinh số nguyên ngẫu nhiên trong khoảng từ min đến max
+let min = 50; // Giá trị nhỏ nhất
+let max = 55; // Giá trị lớn nhất
+let soLuong = Math.floor(Math.random() * (max - min + 1)) + min; // Tạo số nguyên ngẫu nhiên trong đoạn [50, 55]
+console.log(soLuong); // In ra kết quả ngẫu nhiên
+// toFixed(2) làm tròn số thành 2 chữ số thập phân và trả về kiểu chuỗi
+const checkType = (19.956).toFixed(2);
+// typeof dùng để kiểm tra kiểu dữ liệu của biến
+console.log(typeof checkType);
+
+// Tìm giá trị lớn nhất và nhỏ nhất
+// Math.max(...) trả về số lớn nhất trong danh sách
+console.log(Math.max(10, 5, 6, 20));
+// Math.min(...) trả về số nhỏ nhất trong danh sách
+console.log(Math.min(10, 5, 3, 20));
+
+// Lấy giá trị tuyệt đối
+// Math.abs(...) biến số âm thành số dương
+console.log(Math.abs(-15));
+
+// Khai báo biến ngày dưới dạng số
+let ngay = 5;
+
+// Ép kiểu
+// Chuyển số thành chuỗi để có thể dùng các hàm xử lý chuỗi
+let chuoiNgay = String(ngay);
+
+// padStart(2, "0") thêm số 0 vào đầu để đủ 2 ký tự
+let ngayDep = chuoiNgay.padStart(2, "0");
+
+// In ra ngày đã được định dạng đẹp
+console.log(ngayDep);
+
+// Khai báo số thứ tự đơn hàng
+let orderNumber = 5;
+
+// Chuyển số đơn hàng thành chuỗi
+let orderNumberStr = String(orderNumber);
+// Thêm số 0 vào đầu để mã có đủ 5 ký tự
+let orderId = orderNumberStr.padStart(5, "0");
+// Ghép tiền tố "SP-" với mã đơn hàng
+console.log(`SP-${orderId}`);
+// Khai báo tên sản phẩm và giá
+let sanPham = "iphone 18";
+
+let gia = "1000$";
+
+// padEnd(20, ".") thêm dấu chấm vào cuối để canh khoảng cách trước giá
+console.log(sanPham.padEnd(20, ".") + gia);
+// Khai báo biến lưu tên người dùng
+let userName = "neko";
+
+// Khai báo biến lưu tuổi
+let age = 18;
+
+// In ra thông tin bằng cách nối chuỗi với toán tử +
+console.log("Tên: " + userName + " - Tuổi: " + age);
+
+// In ra thông tin bằng cách truyền nhiều giá trị vào console.log()
+console.log("Tên:", userName, "Tuổi:", age);
+
+// In ra thông tin bằng template string và tăng tuổi thêm 1
+console.log(`Tên: ${userName} - Tuổi: ${age + 1}`);
+
 let amount = 9.5;
-let formattedAmount = amount.toFixed(2).padStart(6, '0');
-console.log(formattedAmount); // "009.50"
+let display = amount.toFixed(2).padStart(6, "0");
+console.log(display);
 
+// console.log(amount.toFixed(2)).padStart(6, 0);
+//-> "009.50"
+let price = 54000000;
+console.log(price.toLocaleString("vi-VN"));
+console.log(price.toLocaleString("en-US"));
 
+let moneyText = price.toLocaleString("vi-VN", {
+  style: "currency",
+  currency: "VND",
+});
+console.log(moneyText);
+// 54.000.000 ₫
+
+// 54M -> 54.000.000 dùng slice
+const finalPrice = "54000000";
+const resultFinalPrice =
+  String(finalPrice).slice(0, 2) +
+  "." +
+  String(finalPrice).slice(2, 5) +
+  "." +
+  String(finalPrice).slice(-3);
+
+console.log(resultFinalPrice);
+
+let formated = `${finalPrice.slice(0, -6)}.${finalPrice.slice(-6, -3)}.${finalPrice.slice(-3)}`;
+console.log(formated);
+
+let maGiamGia = "DISCOUNT CODE: 10% OFF";
+console.log(maGiamGia.indexOf(":"));
+
+console.log(maGiamGia.indexOf("%"));
+console.log(maGiamGia.indexOf("1"));
+
+console.log(maGiamGia.slice(15, 17));
+
+//ddeer lấy
+let phanTramGiamGia = Number(
+  maGiamGia.slice(maGiamGia.indexOf(":") + 2, maGiamGia.indexOf("%")),
+);
+console.log(phanTramGiamGia);
+let phanTramGiamGia2 = Number(
+  maGiamGia.replace("DISCOUNT CODE:", "").replace("% OFF", ""),
+);
+
+console.log(phanTramGiamGia2);
