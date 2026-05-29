@@ -146,7 +146,33 @@ console.log("getDiscountInfo():", store.getDiscountInfo());
 // { originalTotal: 54980000, discountRate: 0.1, discountAmount: 5498000, finalTotal: 49482000 }
 
 
-// ## Giải thích Bài 1 theo ngôn ngữ đời thường
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ## Phân tích Bài 1 
 
 // ---
 
